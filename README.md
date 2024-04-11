@@ -2,6 +2,15 @@
 
 This template should help get you started developing with Tauri and Leptos.
 
-## Recommended IDE Setup
+## First install
 
-[VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer).
+You'll need some tools to run this project:
+
+- `cargo install trunk tauri-cli`
+
+
+## Development
+
+To start developing, run:
+
+`cargo tauri dev`
