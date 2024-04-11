@@ -33,9 +33,12 @@ pub fn App() -> impl IntoView {
                 return;
             }
 
-            let args = to_value(&GreetArgs { name: &name }).unwrap();
+            // let args = to_value(&GreetArgs { name: &name }).unwrap();
             // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-            let new_msg = invoke("greet", args).await.as_string().unwrap();
+            // let new_msg = invoke("greet", args).await.as_string().unwrap();
+
+            let new_msg = format!("Hello, {name}! You've been greeted from Rust!");
+
             set_greet_msg.set(new_msg);
         });
     };
