@@ -1,7 +1,6 @@
 use leptos::leptos_dom::ev::SubmitEvent;
 use leptos::*;
-use serde::{Deserialize, Serialize};
-use serde_wasm_bindgen::to_value;
+use leptos_meta::*;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -10,13 +9,15 @@ extern "C" {
     async fn invoke(cmd: &str, args: JsValue) -> JsValue;
 }
 
-#[derive(Serialize, Deserialize)]
-struct GreetArgs<'a> {
-    name: &'a str,
-}
+// #[derive(Serialize, Deserialize)]
+// struct GreetArgs<'a> {
+//     name: &'a str,
+// }
 
 #[component]
 pub fn App() -> impl IntoView {
+    provide_meta_context();
+
     let (name, set_name) = create_signal(String::new());
     let (greet_msg, set_greet_msg) = create_signal(String::new());
 
@@ -44,7 +45,9 @@ pub fn App() -> impl IntoView {
     };
 
     view! {
-        <main class="container">
+        <Stylesheet id="leptos" href="/pkg/tailwind.css" />
+        <Title text="Leptos, Tauri and Tailwind" />
+        <main class="bg-black py-8">
             <div class="row">
                 <p>"Petite application de test pour Tauri + Leptos (soon + Tailwind)"</p>
             </div>
