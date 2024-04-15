@@ -45,23 +45,36 @@ pub fn App() -> impl IntoView {
     };
 
     view! {
-        <Stylesheet id="leptos" href="/pkg/tailwind.css" />
-        <Title text="Leptos, Tauri and Tailwind" />
-        <main class="bg-black py-8">
-            <div class="row">
-                <p>"Petite application de test pour Tauri + Leptos (soon + Tailwind)"</p>
+        <Title text="Leptos, Tauri and Tailwind"/>
+        <main>
+            <div class="hero min-h-screen">
+                <div class="hero-content text-center">
+                    <div class="max-w-md">
+                        <h1 class="text-5xl font-bold">"Leptos, Tauri and Tailwind"</h1>
+                        <p class="py-6">
+                            "Petite application de test pour Tauri + Leptos + Tailwind"
+                        </p>
+
+                        <form on:submit=greet>
+                            <label class="input input-bordered flex items-center gap-2">
+                                Name
+                                <input
+                                    type="text"
+                                    class="grow"
+                                    placeholder="George"
+                                    on:input=update_name
+                                />
+                                <kbd class="kbd kbd-sm">Enter</kbd>
+                            </label>
+                        </form>
+
+                        <p class="py-6">
+                            <b>{move || greet_msg.get()}</b>
+                        </p>
+
+                    </div>
+                </div>
             </div>
-
-            <form class="row" on:submit=greet>
-                <input
-                    id="greet-input"
-                    placeholder="Enter a name..."
-                    on:input=update_name
-                />
-                <button type="submit">"Greet"</button>
-            </form>
-
-            <p><b>{ move || greet_msg.get() }</b></p>
         </main>
     }
 }
