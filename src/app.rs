@@ -56,16 +56,18 @@ pub fn App() -> impl IntoView {
                         </p>
 
                         <form on:submit=greet>
-                            <label class="input input-bordered flex items-center gap-2">
-                                Name
-                                <input
-                                    type="text"
-                                    class="grow"
-                                    placeholder="George"
-                                    on:input=update_name
-                                />
-                                <kbd class="kbd kbd-sm">Enter</kbd>
-                            </label>
+                            <div class="join">
+                                <label class="input input-bordered flex items-center gap-2 join-item">
+                                    Name
+                                    <input
+                                        type="text"
+                                        class="grow"
+                                        placeholder="George"
+                                        on:input=update_name
+                                    /> <kbd class="kbd kbd-sm">Enter</kbd>
+                                </label>
+                                <button class="join-item btn btn-primary">"Greet"</button>
+                            </div>
                         </form>
 
                         <p class="py-6">
