@@ -14,3 +14,12 @@ You'll need some tools to run this project:
 To start developing, run:
 
 `cargo tauri dev`
+
+## For treesitter users
+
+There is an extension to treesitter : https://github.com/rayliwell/tree-sitter-rstml that allows highlighting inside view! macros.
+
+## Formatting
+
+There is a formatter on top of rustfmt for formatting the code inside view! : https://github.com/bram209/leptosfmt
+

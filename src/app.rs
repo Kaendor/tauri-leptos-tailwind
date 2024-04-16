@@ -1,18 +1,6 @@
 use leptos::leptos_dom::ev::SubmitEvent;
 use leptos::*;
 use leptos_meta::*;
-use wasm_bindgen::prelude::*;
-
-#[wasm_bindgen]
-extern "C" {
-    #[wasm_bindgen(js_namespace = ["window", "__TAURI__", "tauri"])]
-    async fn invoke(cmd: &str, args: JsValue) -> JsValue;
-}
-
-// #[derive(Serialize, Deserialize)]
-// struct GreetArgs<'a> {
-//     name: &'a str,
-// }
 
 #[component]
 pub fn App() -> impl IntoView {
@@ -34,10 +22,6 @@ pub fn App() -> impl IntoView {
                 return;
             }
 
-            // let args = to_value(&GreetArgs { name: &name }).unwrap();
-            // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-            // let new_msg = invoke("greet", args).await.as_string().unwrap();
-
             let new_msg = format!("Hello, {name}! You've been greeted from Rust!");
 
             set_greet_msg.set(new_msg);
@@ -52,7 +36,7 @@ pub fn App() -> impl IntoView {
                     <div class="max-w-md">
                         <h1 class="text-5xl font-bold">"Leptos, Tauri and Tailwind"</h1>
                         <p class="py-6">
-                            "Petite application de test pour Tauri + Leptos + Tailwind"
+                            "Little test app for Tauri + Leptos + Tailwind"
                         </p>
 
                         <form on:submit=greet>
