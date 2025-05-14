@@ -16,27 +16,31 @@ pub fn App() -> impl IntoView {
 
     let greet = move |ev: SubmitEvent| {
         ev.prevent_default();
-        spawn_local(async move {
-            let name = name.get_untracked();
-            if name.is_empty() {
-                return;
-            }
 
-            let new_msg = format!("Hello, {name}! You've been greeted from Rust!");
+        let name = name.get_untracked();
+        if name.is_empty() {
+            return;
+        }
 
-            set_greet_msg.set(new_msg);
-        });
+        let greeting_word = match name.as_str() {
+            "Cowboy" => "Howdy",
+            _ => "Hello",
+        };
+
+        let new_msg = format!("{greeting_word}, {name}! You've been greeted from Rust!");
+
+        set_greet_msg.set(new_msg);
     };
 
     view! {
-        <Title text="Leptos, Tauri and Tailwind"/>
+        <Title text="Leptos, Tauri and Tailwind with DaisyUI" />
         <main>
             <div class="hero min-h-screen">
                 <div class="hero-content text-center">
                     <div class="max-w-md">
                         <h1 class="text-5xl font-bold">"Leptos, Tauri and Tailwind"</h1>
                         <p class="py-6">
-                            "Little test app for Tauri + Leptos + Tailwind"
+                            "Little test app for Tauri + Leptos + Tailwind with DaisyUI"
                         </p>
 
                         <form on:submit=greet>
@@ -55,7 +59,7 @@ pub fn App() -> impl IntoView {
                         </form>
 
                         <p class="py-6">
-                            <b>{move || greet_msg.get()}</b>
+                            <b>{greet_msg}</b>
                         </p>
 
                     </div>
